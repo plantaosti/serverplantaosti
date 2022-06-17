@@ -2,19 +2,28 @@
 GET http://localhost:3333/farmacias
 
 ###
+GET http://localhost:3333/farmacia/6c60e7b9-fd88-41e9-9648-ad983928fe25
+
+###
+DELETE http://localhost:3333/farmacia/0756fe76-144e-412c-8f63-e10791a6ace1
+
+###
+GET http://localhost:3333/farmacias
+
+###
 POST http://localhost:3333/farmacias
 Content-Type: application/json
 
 {
-  "name": "Farmautil",
-  "urllogo": "farmacia-farmautil-centro.jpg",
-  "phone": "(45) 3541-1414",
-  "whatsapp": "+554535411414",
-  "street": "Rua Primeiro de Maio, 610",
-  "city": "Santa Terezinha de Itaipu",
-  "zipcode": 85875000,
-  "neighborhood": "Centro",
-  "lat": "-25.441324",
-  "lng": "-54.4020118,17z",
-  "email": "farmautilbr@gmail.com"
+      "name": "Farma Vilmo",
+      "urllogo": "farmacia-farma-vilmo.jpg",
+      "phone": "(45) 3541-1126",
+      "whatsapp": "+554535411149",
+      "street": "Rua Primeiro de Maio, 149",
+      "city": "Santa Terezinha de Itaipu",
+      "zipcode": 85875000,
+      "neighborhood": "Centro",
+      "lat": "-25.4439472",
+      "lng": "-54.4013689,19.99z",
+      "email": "farmavilmo@email.com"
 }

@@ -15,6 +15,7 @@ export interface IFarmaciasData {
 }
 
 export interface IFarmaciasRepository {
-  lista(): Promise<Farmacia[]>;
+  lista(id): Promise<Farmacia[]>;
   create: (data: IFarmaciasData) => Promise<void>;
+  delete: (id) => Promise<void>;
 }

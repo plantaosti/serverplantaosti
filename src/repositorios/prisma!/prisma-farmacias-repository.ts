@@ -1,8 +1,15 @@
 import { Farmacia } from "@prisma/client";
-import { prisma } from "../../prisma";
+import { prisma } from "../../database/prismaClient";
 import { IFarmaciasData, IFarmaciasRepository } from "../farmacias-repository";
 
 export class PrismaFarmaciasRepository implements IFarmaciasRepository {
+  async delete(id): Promise<void> {
+    await prisma.farmacia.delete({
+      where: {
+        id,
+      },
+    });
+  }
   async create({
     name,
     city,
@@ -34,7 +41,11 @@ export class PrismaFarmaciasRepository implements IFarmaciasRepository {
   }
 
   async lista(): Promise<Farmacia[]> {
-    const farmacias = await prisma.farmacia.findMany();
+    const farmacias = await prisma.farmacia.findMany({
+      where: {
+        name: "Farmautil",
+      },
+    });
 
     return farmacias;
   }
