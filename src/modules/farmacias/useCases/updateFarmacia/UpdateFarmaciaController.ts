@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
-import { CreateFarmaciaUseCase } from "./CreateFarmaciaUseCase";
+import { UpdateFarmaciaUseCase } from "./UpdateFarmaciaUseCase";
 
-export class CreateFarmaciaController {
-  async handle(request: Request, response: Response) {
+export class UpdateFarmaciaController {
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
     const {
       name,
       urllogo,
@@ -16,9 +17,10 @@ export class CreateFarmaciaController {
       lng,
       email,
     } = request.body;
-    const createAt = Date.now();
-    const createFarmaciaUseCase = new CreateFarmaciaUseCase();
-    const result = createFarmaciaUseCase.execute({
+
+    const updateFarmaciaUseCase = new UpdateFarmaciaUseCase();
+    const result = await updateFarmaciaUseCase.execute({
+      id,
       name,
       urllogo,
       phone,
@@ -30,7 +32,6 @@ export class CreateFarmaciaController {
       lat,
       lng,
       email,
-      createAt: `${createAt}`,
     });
 
     return response.json(result);

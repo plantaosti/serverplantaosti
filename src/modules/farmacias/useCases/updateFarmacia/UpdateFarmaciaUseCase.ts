@@ -1,6 +1,8 @@
+import { Farmacia } from "@prisma/client";
 import { prisma } from "../../../../database/prismaClient";
 
-interface ICreateFarmacia {
+export interface IRequest {
+  id: string;
   name: string;
   urllogo: string;
   phone: string;
@@ -12,11 +14,11 @@ interface ICreateFarmacia {
   lat: string;
   lng: string;
   email: string;
-  createAt: string;
 }
 
-export class CreateFarmaciaUseCase {
+export class UpdateFarmaciaUseCase {
   async execute({
+    id,
     name,
     urllogo,
     phone,
@@ -28,9 +30,11 @@ export class CreateFarmaciaUseCase {
     lat,
     lng,
     email,
-    createAt,
-  }: ICreateFarmacia) {
-    const farmacia = await prisma.farmacia.create({
+  }: IRequest): Promise<Farmacia> {
+    const result = await prisma.farmacia.update({
+      where: {
+        id,
+      },
       data: {
         name,
         urllogo,
@@ -43,10 +47,9 @@ export class CreateFarmaciaUseCase {
         lat,
         lng,
         email,
-        createAt,
       },
     });
 
-    return farmacia;
+    return result;
   }
 }

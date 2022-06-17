@@ -22,8 +22,8 @@ model Farmacia {
   lng          String
   email        String
   plantao      Plantao[]
-  createAt     DateTime  @default(now())
-  updateAt     DateTime  @default(now())
+  createAt     DateTime
+  updateAt     DateTime  @updatedAt
 
   @@map("farmacias")
 }
@@ -33,8 +33,8 @@ model Plantao {
 
   datetimestart DateTime
   datetimeend   DateTime
-  createAt      DateTime @default(now())
-  updateAt      DateTime @default(now())
+  createAt      DateTime
+  updateAt      DateTime @updatedAt
 
   Farmacia   Farmacia? @relation(fields: [farmaciaId], references: [id])
   farmaciaId String?

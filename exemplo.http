@@ -25,5 +25,13 @@ Content-Type: application/json
       "neighborhood": "Centro",
       "lat": "-25.4439472",
       "lng": "-54.4013689,19.99z",
-      "email": "farmavilmo@email.com"
+      "email": "farmavilmo@gmail.com"
+}
+###
+PUT http://localhost:3333/farmacia/
+Content-Type: application/json
+
+{
+
+      "email": "farmavilmo@gmail.com"
 }

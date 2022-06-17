@@ -18,4 +18,5 @@ export interface IFarmaciasRepository {
   lista(id): Promise<Farmacia[]>;
   create: (data: IFarmaciasData) => Promise<void>;
   delete: (id) => Promise<void>;
+  update: (data: IFarmaciasData) => Promise<Farmacia>;
 }
