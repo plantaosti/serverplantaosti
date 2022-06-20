@@ -16,7 +16,6 @@ export class CreateFarmaciaController {
       lng,
       email,
     } = request.body;
-    const createAt = Date.now();
     const createFarmaciaUseCase = new CreateFarmaciaUseCase();
     const result = createFarmaciaUseCase.execute({
       name,
@@ -30,7 +29,6 @@ export class CreateFarmaciaController {
       lat,
       lng,
       email,
-      createAt: `${createAt}`,
     });
 
     return response.json(result);

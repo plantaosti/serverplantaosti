@@ -12,7 +12,6 @@ interface ICreateFarmacia {
   lat: string;
   lng: string;
   email: string;
-  createAt: string;
 }
 
 export class CreateFarmaciaUseCase {
@@ -28,7 +27,6 @@ export class CreateFarmaciaUseCase {
     lat,
     lng,
     email,
-    createAt,
   }: ICreateFarmacia) {
     const farmacia = await prisma.farmacia.create({
       data: {
@@ -43,7 +41,6 @@ export class CreateFarmaciaUseCase {
         lat,
         lng,
         email,
-        createAt,
       },
     });
 

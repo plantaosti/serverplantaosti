@@ -2,7 +2,7 @@
 GET http://localhost:3333/farmacias
 
 ###
-GET http://localhost:3333/farmacia/6c60e7b9-fd88-41e9-9648-ad983928fe25
+GET http://localhost:3333/farmacia/fce590c0-2678-4110-8e72-80f21ddd4bf9
 
 ###
 DELETE http://localhost:3333/farmacia/0756fe76-144e-412c-8f63-e10791a6ace1
@@ -15,23 +15,40 @@ POST http://localhost:3333/farmacias
 Content-Type: application/json
 
 {
-      "name": "Farma Vilmo",
-      "urllogo": "farmacia-farma-vilmo.jpg",
-      "phone": "(45) 3541-1126",
-      "whatsapp": "+554535411149",
-      "street": "Rua Primeiro de Maio, 149",
+      "name": "Clarifarma Centro",
+      "urllogo": "farmacia-clarifarma-centro.jpg",
+      "phone": "(45) 3541-3230",
+      "whatsapp": "+554535413230",
+      "street": "Av dos Estados, 1453",
       "city": "Santa Terezinha de Itaipu",
       "zipcode": 85875000,
       "neighborhood": "Centro",
-      "lat": "-25.4439472",
-      "lng": "-54.4013689,19.99z",
-      "email": "farmavilmo@gmail.com"
+      "lat": "-25.4370777",
+      "lng": "-54.3979143,19.89z",
+      "email": "clarifarma@email.com"
 }
 ###
-PUT http://localhost:3333/farmacia/
+PUT http://localhost:3333/farmacia/fce590c0-2678-4110-8e72-80f21ddd4bf9
 Content-Type: application/json
 
 {
 
       "email": "farmavilmo@gmail.com"
+}
+
+
+###
+GET http://localhost:3333/plantoes
+
+###
+GET http://localhost:3333/plantoes/6eb60f29-6e77-427b-a17b-0fa5c1766e62
+
+###
+POST http://localhost:3333/plantoes
+Content-Type: application/json
+
+{
+    "datetimestart": "2022-06-18T12:00:00.000Z",
+    "datetimeend": "2022-06-25T11:59:00.000Z",
+      "farmaciaId": "3db6728d-4efa-4a47-84a7-a5a240b44b45"
 }
