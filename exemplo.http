@@ -2,8 +2,7 @@
 GET http://localhost:3333/farmacias
 
 ###
-GET http://localhost:3333/farmacia/fce590c0-2678-4110-8e72-80f21ddd4bf9
-
+GET http://localhost:3333/farmacia/41b8f404-e8e1-40c0-8301-071b71c5d532
 ###
 DELETE http://localhost:3333/farmacia/0756fe76-144e-412c-8f63-e10791a6ace1
 
@@ -41,14 +40,14 @@ Content-Type: application/json
 GET http://localhost:3333/plantoes
 
 ###
-GET http://localhost:3333/plantoes/6eb60f29-6e77-427b-a17b-0fa5c1766e62
+GET http://localhost:3333/plantoes/d324048c-f2e4-4fa8-aab1-a3bd44e1d5cf
 
 ###
 POST http://localhost:3333/plantoes
 Content-Type: application/json
 
 {
-    "datetimestart": "2022-06-18T12:00:00.000Z",
-    "datetimeend": "2022-06-25T11:59:00.000Z",
-      "farmaciaId": "3db6728d-4efa-4a47-84a7-a5a240b44b45"
+      "datetimestart": "2022-07-16T12:00:00.000Z",
+      "datetimeend": "2022-07-23T11:59:00.000Z",
+      "farmaciaId": "asddfaf333fc2ec48e-c779-4855-8a38-320ce2f660be"
 }

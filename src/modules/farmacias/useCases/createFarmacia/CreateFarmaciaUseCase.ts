@@ -1,20 +1,15 @@
-import { prisma } from "../../../../database/prismaClient";
+import { ICreateFarmaciasDTO } from "@modules/farmacias/dtos/ICreateFarmaciasDTO";
+import { IFarmaciasRepository } from "@modules/farmacias/repositories/IFarmaciaRespository";
+import { prisma } from "@shared/infra/prisma/database/prismaClient";
+import { inject, injectable } from "tsyringe";
 
-interface ICreateFarmacia {
-  name: string;
-  urllogo: string;
-  phone: string;
-  whatsapp: string;
-  street: string;
-  city: string;
-  zipcode: number;
-  neighborhood: string;
-  lat: string;
-  lng: string;
-  email: string;
-}
+@injectable()
+class CreateFarmaciaUseCase {
+  constructor(
+    @inject("FarmaciasRepository")
+    private farmaciasRepository: IFarmaciasRepository
+  ) {}
 
-export class CreateFarmaciaUseCase {
   async execute({
     name,
     urllogo,
@@ -27,7 +22,7 @@ export class CreateFarmaciaUseCase {
     lat,
     lng,
     email,
-  }: ICreateFarmacia) {
+  }: ICreateFarmaciasDTO) {
     const farmacia = await prisma.farmacia.create({
       data: {
         name,
@@ -47,3 +42,5 @@ export class CreateFarmaciaUseCase {
     return farmacia;
   }
 }
+
+export { CreateFarmaciaUseCase };

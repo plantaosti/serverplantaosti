@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { CreateFarmaciaUseCase } from "./CreateFarmaciaUseCase";
 
 export class CreateFarmaciaController {
@@ -16,7 +17,7 @@ export class CreateFarmaciaController {
       lng,
       email,
     } = request.body;
-    const createFarmaciaUseCase = new CreateFarmaciaUseCase();
+    const createFarmaciaUseCase = container.resolve(CreateFarmaciaUseCase);
     const result = createFarmaciaUseCase.execute({
       name,
       urllogo,

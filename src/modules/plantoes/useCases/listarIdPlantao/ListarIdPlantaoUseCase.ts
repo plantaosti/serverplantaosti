@@ -1,20 +1,14 @@
-import { prisma } from "../../../../database/prismaClient";
+import { PlantoesRepository } from "@modules/plantoes/infra/prisma/repositories/plantoesRepository";
+import { inject, injectable } from "tsyringe";
 
-interface IListarPlantao {
-  id: string;
-}
-
+@injectable()
 export class ListarIdPlantaoUseCase {
-  async execute({ id }: IListarPlantao) {
-    const result = await prisma.plantao.findUnique({
-      where: {
-        id,
-      },
-      include: {
-        Farmacia: true,
-      },
-    });
-
-    return result;
+  constructor(
+    @inject("PlantoesRepository")
+    private plantoesRepository: PlantoesRepository
+  ) {}
+  async execute(id: string) {
+    const plantao = this.plantoesRepository.findById(id);
+    return plantao;
   }
 }

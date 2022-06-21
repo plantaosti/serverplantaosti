@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { ListarIdPlantaoUseCase } from "./ListarIdPlantaoUseCase";
 
 export class ListarIdPlantaoController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const listarIdplantaoUseCase = new ListarIdPlantaoUseCase();
-    const result = await listarIdplantaoUseCase.execute({
-      id: id,
-    });
+    const listarIdplantaoUseCase = container.resolve(ListarIdPlantaoUseCase);
+    const plantao = await listarIdplantaoUseCase.execute(id);
 
-    return response.json(result);
+    return response.json(plantao);
   }
 }

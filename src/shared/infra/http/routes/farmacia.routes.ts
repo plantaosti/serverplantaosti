@@ -1,7 +1,7 @@
+import { DeleteFarmaciaController } from "@modules/farmacias/useCases/deleteFarmacia/DeleteFarmaciaController";
+import { ListarIdFarmaciaController } from "@modules/farmacias/useCases/listarIdFarmacia/ListarIdFarmaciaController";
+import { UpdateFarmaciaController } from "@modules/farmacias/useCases/updateFarmacia/UpdateFarmaciaController";
 import { Router } from "express";
-import { DeleteFarmaciaController } from "../modules/farmacias/useCases/deleteFarmacia/DeleteFarmaciaController";
-import { ListarIdFarmaciaController } from "../modules/farmacias/useCases/listarIdFarmacia/ListarIdFarmaciaController";
-import { UpdateFarmaciaController } from "../modules/farmacias/useCases/updateFarmacia/UpdateFarmaciaController";
 
 const farmaciaRoutes = Router();
 

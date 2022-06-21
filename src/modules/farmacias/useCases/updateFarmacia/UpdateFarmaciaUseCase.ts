@@ -1,5 +1,7 @@
+import { IFarmaciasRepository } from "@modules/farmacias/repositories/IFarmaciaRespository";
 import { Farmacia } from "@prisma/client";
-import { prisma } from "../../../../database/prismaClient";
+import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
 export interface IRequest {
   id: string;
@@ -16,7 +18,12 @@ export interface IRequest {
   email: string;
 }
 
+@injectable()
 export class UpdateFarmaciaUseCase {
+  constructor(
+    @inject("FarmaciasRepository")
+    private farmaciaRepository: IFarmaciasRepository
+  ) {}
   async execute({
     id,
     name,
@@ -31,23 +38,23 @@ export class UpdateFarmaciaUseCase {
     lng,
     email,
   }: IRequest): Promise<Farmacia> {
-    const result = await prisma.farmacia.update({
-      where: {
-        id,
-      },
-      data: {
-        name,
-        urllogo,
-        phone,
-        whatsapp,
-        street,
-        city,
-        zipcode,
-        neighborhood,
-        lat,
-        lng,
-        email,
-      },
+    const farmacia = await this.farmaciaRepository.findById(id);
+
+    if (!farmacia) {
+      throw new AppError("Nenhuma farmacia cadastrada com esse id", 401);
+    }
+    const result = await this.farmaciaRepository.update({
+      name,
+      urllogo,
+      phone,
+      whatsapp,
+      street,
+      city,
+      zipcode,
+      neighborhood,
+      lat,
+      lng,
+      email,
     });
 
     return result;

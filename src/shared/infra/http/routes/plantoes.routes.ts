@@ -1,8 +1,7 @@
+import { CreatePlantaoController } from "@modules/plantoes/useCases/createPlantao/CreatePlantaoController";
+import { ListarAllPlantoesController } from "@modules/plantoes/useCases/listarAllPlantoes/ListarAllPlantoesController";
+import { ListarIdPlantaoController } from "@modules/plantoes/useCases/listarIdPlantao/ListarIdPlantaoController";
 import { Router } from "express";
-import { CreatePlantaoController } from "../modules/plantoes/useCases/createPlantao/CreatePlantaoController";
-import { ListarAllPlantoesController } from "../modules/plantoes/useCases/listarAllPlantoes/ListarAllPlantoesController";
-import { ListarIdPlantaoController } from "../modules/plantoes/useCases/listarIdPlantao/ListarIdPlantaoController";
-
 const plantoesRoutes = Router();
 
 const createPlantaoController = new CreatePlantaoController();

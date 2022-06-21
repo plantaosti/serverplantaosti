@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { UpdateFarmaciaUseCase } from "./UpdateFarmaciaUseCase";
 
 export class UpdateFarmaciaController {
@@ -18,7 +19,7 @@ export class UpdateFarmaciaController {
       email,
     } = request.body;
 
-    const updateFarmaciaUseCase = new UpdateFarmaciaUseCase();
+    const updateFarmaciaUseCase = container.resolve(UpdateFarmaciaUseCase);
     const result = await updateFarmaciaUseCase.execute({
       id,
       name,

@@ -1,15 +1,15 @@
-import { prisma } from "../../../../database/prismaClient";
+import { FarmaciasRepository } from "@modules/farmacias/infra/prisma/repositories/farmaciasRepository";
+import { inject, injectable } from "tsyringe";
 
-interface IListarFarmacia {
-  id?: string;
-}
+@injectable()
 export class ListarIdFarmaciaUseCase {
-  async execute({ id }: IListarFarmacia) {
-    const result = await prisma.farmacia.findUnique({
-      where: {
-        id,
-      },
-    });
-    return result;
+  constructor(
+    @inject("FarmaciasRepository")
+    private farmaciasRepository: FarmaciasRepository
+  ) {}
+  async execute(id: string) {
+    const farmacia = await this.farmaciasRepository.findById(id);
+
+    return farmacia;
   }
 }
